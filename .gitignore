@@ -7,15 +7,17 @@ node_modules/
 vendor/
 var/
 .tmp/
+releases/
+__pycache__
 
 # IDE's
 .vscode/
 .idea/
 
-
 ##### Files #####
 ignore.*
 *.ignore.*
+*.spec
 
 # Environment variables and secret keys
 .env
