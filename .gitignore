@@ -1,4 +1,4 @@
-###> Josee9988/project-template ###
+###> Josee9988/Mechanography-simulator ###
 
 ##### Folders #####
 build/
@@ -22,4 +22,4 @@ ignore.*
 .env.test
 *.pem
 
-###< Josee9988/project-template ###
+###< Josee9988/Mechanography-simulator ###
