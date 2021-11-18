@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
-import pynput
+import os
 import random
 import time
-import os
+from typing import Union
+
+import pynput
 
 metadata = dict(
     __title__='Mechanography tester',
@@ -21,6 +23,7 @@ metadata = dict(
 globals().update(metadata)
 
 KEYBOARD = pynput.keyboard.Controller()  # Create the controller
+COUNTDOWN_TIME = 5  # seconds
 ERROR_LETTERS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` '
 COLOUR_RED = "\033[1;31;40m"
 COLOUR_GREEN = "\033[1;32;40m"
@@ -30,7 +33,7 @@ if os.name == 'nt':  # If we are running on Windows remove all the colours
     COLOUR_RED = COLOUR_GREEN = COLOUR_RESET = ""
 
 
-def write_keyboard_with_delay_and_randomness(text: str, error: int, speed: float, speed_rate_added: float) -> None:
+def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_rate_added: float = 0.5) -> None:
     error_rate = error
     i = len(text)
     for character in text:  # Loop over each character in the string
@@ -40,55 +43,58 @@ def write_keyboard_with_delay_and_randomness(text: str, error: int, speed: float
             error_rate = error
         else:  # Type the character
             KEYBOARD.type(character)
-        time.sleep(random.uniform(0, speed) +
-                   random.uniform(0, speed_rate_added))  # Sleep for the amount of seconds generated
+        time.sleep(random.uniform(0, speed) + random.uniform(0, speed_rate_added))  # Sleep
         i = i - 1
-        print("Carácteres restantes: %d  " %
-              i, end='\r')  # yes, theese spaces are useful
+        print("Carácteres restantes: %d     " % i, end='\r')  # yes, theese spaces are useful
 
 
 def yes_or_no(question) -> bool:
-    reply = input(question + ' (s/n): ').lower().strip()
-    if reply[0] == 'S' or reply[0] == 's':
+    reply = input(question + 'yes/no (y/n): ').lower().strip()
+    if reply[0] == 'Y' or reply[0] == 'y':
         return True
     if reply[0] == 'N' or reply[0] == 'n':
         return False
     else:
-        return yes_or_no("Por favor, introduce 's' o 'n''.")
+        return yes_or_no("Por favor, introduce 'Y' o 'N''.")
 
 
-def ask_and_execute() -> None:
-    start_time = 5
-    error_rate = int(
-        input("Introduce cada cuántos carácteres se realizará un fallo: "))
-    speed = float(input("Introduce tasa de pulsaciones (ej: 0.1): "))
-    speed_rate_added = float(
-        input("Introduce tasa de aleatoriedad de pulsaciones a añadir (ej: 0.05): "))
+# returns text, error, speed and speed_rate
+def obtain_parameters() -> dict[str, Union[int, float, str]]:
+    parameters = {"Text": "", "Error": int(
+        input("Introduce cada cuántos carácteres se realizará un fallo: ")), "Speed": float(
+        input("Introduce tasa de pulsaciones (ej: 0.1): ")), "Speed_rate_added": float(
+        input("Introduce tasa de aleatoriedad de pulsaciones a añadir (ej: 0.05): "))}
+
     print("Introduce el texto a escribir: (doble intro para validarlo)\n")
 
     text = '\n'.join(iter(input, ""))
-    text_parsed = text.replace("\n", " ").strip()
+    parameters["Text"] = text.replace("\n", " ").strip()
 
+    return parameters
+
+
+def announce_countdown(text: str, countdown_duration: int) -> None:
     for _ in range(5):
         print("%sPor favor, situa el ratón donde desees escribir, el programa empezará en %d segundos%s"
-              % (COLOUR_GREEN, start_time, COLOUR_RESET), end='\r')
-        start_time = start_time - 1
+              % (COLOUR_GREEN, countdown_duration, COLOUR_RESET), end='\r')
+        countdown_duration = countdown_duration - 1
         time.sleep(1)
 
     print("\n%sEscribiendo %d carácteres...%s\n" %
-          (COLOUR_RED, len(text_parsed), COLOUR_RESET))
+          (COLOUR_RED, len(text), COLOUR_RESET))
 
-    write_keyboard_with_delay_and_randomness(
-        text_parsed, error_rate, speed, speed_rate_added)  # Execute the function
+
+def main_handler() -> None:
+    parameters = obtain_parameters()
+    announce_countdown(parameters["Text"], COUNTDOWN_TIME)
+    write_as_keyboard(parameters["Text"], parameters["Error"],
+                      parameters["Speed"], parameters["Speed_rate_added"])
+    input("Pulsa cualquier tecla para continuar... ")
 
 
 # -- MAIN -- #
-
 print("Programa hecho por @Josee9988 | Jose Gracia Berenguer ;)\n\n")
-
-ask_and_execute()
-input("Pulsa cualquier tecla para continuar... ")
+main_handler()
 
 while yes_or_no("\nDeseas volver a ejecutar el programa (con otros datos)"):
-    ask_and_execute()
-    input("Pulsa cualquier tecla para continuar... ")
+    main_handler()
