@@ -14,7 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * Support for the English language.
 * A file with the translations.
 * A 'src/' folder to contain the files.
-* When an error is writen it will also write the correct character after it.
+* When an error is written it will also write the correct character after it.
 * Function type hintings.
 
 ### Removed
