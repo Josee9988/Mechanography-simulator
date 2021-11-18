@@ -7,6 +7,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.1.0**] - 2021-11-18
+
+### Added
+
+* Support for the English language.
+* A file with the translations.
+* A 'src/' folder to contain the files.
+* When an error is writen it will also write the correct character after it.
+* Function type hintings.
+
+### Removed
+
+* Reduced import size by importing only the used functions
+
 ## [**1.0.0**] - 2021-11-17
 
 ### Added
