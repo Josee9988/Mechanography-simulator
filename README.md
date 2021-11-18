@@ -31,7 +31,7 @@
 
 ## ⚡ **Installation**
 
-* Go to the [**releases** section](https://github.com/Josee9988/Mechanography-simulator/releases) and download the
+* Go to the [**releases** section](https://github.com/Josee9988/Mechanography-simulator/releases) and download
   the latest version for your operating system.
 
 ---
@@ -47,13 +47,13 @@
   1. **Rate of typos** (integer)
   2. **Pulsation speed** (integer or decimal)
   3. **Pulsation random speed rate added** (integer or decimal)
-  4. **Text** to be writen
+  4. **Text** to be written
 
 ---
 
 ## 📝 **Additional notes**
 
-* This script can be modified to fit multiple needs and can be easily added to new language traductions.
+* This script can be modified to fit multiple needs and can be easily added new features by the user, so feel free to fork it.
 
 ---
 
@@ -66,7 +66,7 @@
 
 We are currently looking for new donators to help and maintain this project! ❤️
 
-By donating, you will help the development of this project and *you will be featured in this Mechanography-simulator's
+By donating, you will help the development of this project, and *you will be featured in this Mechanography-simulator's
 README.md* so, everyone can see your kindness and visit your content ⭐.
 
 <a href="https://github.com/sponsors/Josee9988">
