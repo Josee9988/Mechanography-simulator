@@ -3,6 +3,7 @@ from locale import getlocale
 
 def obtain_mechanography_language_dictionary() -> dict:
     # Obtains the system language and writes the print texts in English or Spanish. The function returns the dict
+
     language_dict: dict = {}
     if 'En' in getlocale()[0] or 'en' in getlocale()[0]:  # ENGLISH 🇬🇧🇺🇸
         language_dict = {"Greeting": "Script made by @Josee9988 | Jose Gracia Berenguer ;)\n\n",

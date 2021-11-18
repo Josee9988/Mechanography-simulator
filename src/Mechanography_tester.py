@@ -3,7 +3,7 @@
 from os import name
 from random import uniform, choice
 from time import sleep
-from typing import Union
+from typing import Dict, Union
 
 from pynput import keyboard
 
@@ -47,7 +47,8 @@ def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_ra
             KEYBOARD.type(character)
         sleep(uniform(0, speed) + uniform(0, speed_rate_added))  # Sleep
         i = i - 1
-        print(LANGUAGE_OUTPUT["Remaining_characters"] % i, end='\r')  # yes, theese spaces are useful
+        print(LANGUAGE_OUTPUT["Remaining_characters"] %
+              i, end='\r')  # yes, theese spaces are useful
 
 
 def yes_or_no(question) -> bool:
@@ -61,26 +62,27 @@ def yes_or_no(question) -> bool:
 
 
 # returns text, error, speed and speed_rate
-def obtain_parameters() -> {str, Union[int, float, str]}:
+def obtain_parameters() -> Dict[str, Union[int, float, str]]:
     parameters: dict = {"Text": "", "Error": int(input(LANGUAGE_OUTPUT["Error_parameter"])),
-                  "Speed": float(input(LANGUAGE_OUTPUT["Type_rate_parameter"])),
-                  "Speed_rate_added": float(input(LANGUAGE_OUTPUT["Type_rate_added_parameter"]))}
+                        "Speed": float(input(LANGUAGE_OUTPUT["Type_rate_parameter"])),
+                        "Speed_rate_added": float(input(LANGUAGE_OUTPUT["Type_rate_added_parameter"]))}
 
     print(LANGUAGE_OUTPUT["Text_parameter"])
 
     text: str = '\n'.join(iter(input, ""))
     parameters["Text"] = text.replace("\n", " ").strip()
-
     return parameters
 
 
 def announce_countdown(text: str, countdown_duration: int) -> None:
     for _ in range(5):
-        print(LANGUAGE_OUTPUT["Countdown"] % (COLOUR_GREEN, countdown_duration, COLOUR_RESET), end='\r')
+        print(LANGUAGE_OUTPUT["Countdown"] % (
+            COLOUR_GREEN, countdown_duration, COLOUR_RESET), end='\r')
         countdown_duration = countdown_duration - 1
         sleep(1)
 
-    print(LANGUAGE_OUTPUT["Writing_characters"] % (COLOUR_RED, len(text), COLOUR_RESET))
+    print(LANGUAGE_OUTPUT["Writing_characters"] %
+          (COLOUR_RED, len(text), COLOUR_RESET))
 
 
 def main_handler() -> None:

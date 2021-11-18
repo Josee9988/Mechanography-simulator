@@ -9,6 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ## [**1.1.1**] - 2021-11-18
 
+### Fixed
+
+* Some typos in the README.md file.
+* Some minor type hinting mistakes.
+
+## [**1.1.0**] - 2021-11-18
+
 ### Added
 
 * Extra type hinting support
@@ -25,7 +32,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 * A file with the translations.
 * A 'src/' folder to contain the files.
 * When an error is written it will also write the correct character after it.
-* Function type hintings.
+* Function type hinting.
 
 ### Removed
 
