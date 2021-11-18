@@ -61,7 +61,7 @@
 
 <!-- Change your small logo -->
 <a href="https://github.com/Josee9988/Mechanography simulator">
-  <img alt="@Josee9988/Mechanography simulator's brand logo without text" align="right" src="https://i.imgur.com/3qK1sie.png" width="18%" />
+  <img alt="@Josee9988/Mechanography simulator's brand logo without text" align="right" src="https://i.imgur.com/PuInN3X.png" width="17%" />
 </a>
 
 We are currently looking for new donators to help and maintain this project! ❤️
