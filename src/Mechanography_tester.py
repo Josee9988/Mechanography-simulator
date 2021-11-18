@@ -2,8 +2,8 @@
 
 from os import name
 from random import uniform, choice
-from typing import Union
 from time import sleep
+from typing import Union
 
 from pynput import keyboard
 
@@ -23,19 +23,19 @@ globals().update(dict(
 ))  # metadata
 
 KEYBOARD = keyboard.Controller()  # Create the controller
-LANGUAGE_OUTPUT = obtain_mechanography_language_dictionary()
-COUNTDOWN_TIME = 5  # seconds
-ERROR_LETTERS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` '
-COLOUR_RED = "\033[1;31;40m"
-COLOUR_GREEN = "\033[1;32;40m"
-COLOUR_RESET = "\033[0;0m"
+LANGUAGE_OUTPUT: dict = obtain_mechanography_language_dictionary()
+COUNTDOWN_TIME: int = 5  # seconds
+ERROR_LETTERS: str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` '
+COLOUR_RED: str = "\033[1;31;40m"
+COLOUR_GREEN: str = "\033[1;32;40m"
+COLOUR_RESET: str = "\033[0;0m"
 
 if name == 'nt':  # If we are running on Windows remove all the colours
     COLOUR_RED = COLOUR_GREEN = COLOUR_RESET = ""
 
 
 def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_rate_added: float = 0.5) -> None:
-    error_rate = error
+    error_rate: float = error
     i = len(text)
     for character in text:  # Loop over each character in the string
         error_rate = error_rate - uniform(0, 1)
@@ -51,7 +51,7 @@ def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_ra
 
 
 def yes_or_no(question) -> bool:
-    reply = input(question + ' yes/no (y/n): ').lower().strip()
+    reply: str = input(question + ' yes/no (y/n): ').lower().strip()
     if reply[0] == 'Y' or reply[0] == 'y':
         return True
     if reply[0] == 'N' or reply[0] == 'n':
@@ -62,13 +62,13 @@ def yes_or_no(question) -> bool:
 
 # returns text, error, speed and speed_rate
 def obtain_parameters() -> {str, Union[int, float, str]}:
-    parameters = {"Text": "", "Error": int(input(LANGUAGE_OUTPUT["Error_parameter"])),
+    parameters: dict = {"Text": "", "Error": int(input(LANGUAGE_OUTPUT["Error_parameter"])),
                   "Speed": float(input(LANGUAGE_OUTPUT["Type_rate_parameter"])),
                   "Speed_rate_added": float(input(LANGUAGE_OUTPUT["Type_rate_added_parameter"]))}
 
     print(LANGUAGE_OUTPUT["Text_parameter"])
 
-    text = '\n'.join(iter(input, ""))
+    text: str = '\n'.join(iter(input, ""))
     parameters["Text"] = text.replace("\n", " ").strip()
 
     return parameters
@@ -84,7 +84,7 @@ def announce_countdown(text: str, countdown_duration: int) -> None:
 
 
 def main_handler() -> None:
-    parameters = obtain_parameters()
+    parameters: dict = obtain_parameters()
     announce_countdown(parameters["Text"], COUNTDOWN_TIME)
     write_as_keyboard(parameters["Text"], parameters["Error"],
                       parameters["Speed"], parameters["Speed_rate_added"])

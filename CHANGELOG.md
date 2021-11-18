@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.1.1**] - 2021-11-18
+
+### Added
+
+* Extra type hinting support
+
+### Fixed
+
+* The language detection for Spanish
+
 ## [**1.1.0**] - 2021-11-18
 
 ### Added
