@@ -16,7 +16,7 @@ globals().update(dict(
     __status__="Production",
     __copyright__='Free Software License',
     __license__='MIT',
-    __version__='1.1.2',
+    __version__='1.1.3',
     __summary__='A Python3 script that simulates the user typing a text on their keyboard. (control the speed, '
                 'randomness, rate of typos and more!)',
     __uri__='https://jgracia.es',
@@ -45,10 +45,9 @@ def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_ra
             error_rate = error
         else:  # Type the character
             KEYBOARD.type(character)
-        sleep(uniform(0, speed) + uniform(0, speed_rate_added))  # Sleep
+        sleep(speed + uniform(0, speed_rate_added))  # Sleep
         i = i - 1
-        print(LANGUAGE_OUTPUT["Remaining_characters"] %
-              i, end='\r')
+        print(LANGUAGE_OUTPUT["Remaining_characters"] % i, end='\r')
 
 
 def yes_or_no(question) -> bool:
