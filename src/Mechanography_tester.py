@@ -16,13 +16,13 @@ globals().update(dict(
     __status__="Production",
     __copyright__='Free Software License',
     __license__='MIT',
-    __version__='1.1.0',
+    __version__='1.1.2',
     __summary__='A Python3 script that simulates the user typing a text on their keyboard. (control the speed, '
                 'randomness, rate of typos and more!)',
     __uri__='https://jgracia.es',
 ))  # metadata
 
-KEYBOARD = keyboard.Controller()  # Create the controller
+KEYBOARD: any = keyboard.Controller()  # Create the controller
 LANGUAGE_OUTPUT: dict = obtain_mechanography_language_dictionary()
 COUNTDOWN_TIME: int = 5  # seconds
 ERROR_LETTERS: str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` '
@@ -36,7 +36,7 @@ if name == 'nt':  # If we are running on Windows remove all the colours
 
 def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_rate_added: float = 0.5) -> None:
     error_rate: float = error
-    i = len(text)
+    i: int = len(text)
     for character in text:  # Loop over each character in the string
         error_rate = error_rate - uniform(0, 1)
         if error_rate < 0:  # type an error
@@ -48,7 +48,7 @@ def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_ra
         sleep(uniform(0, speed) + uniform(0, speed_rate_added))  # Sleep
         i = i - 1
         print(LANGUAGE_OUTPUT["Remaining_characters"] %
-              i, end='\r')  # yes, theese spaces are useful
+              i, end='\r')
 
 
 def yes_or_no(question) -> bool:
@@ -63,13 +63,13 @@ def yes_or_no(question) -> bool:
 
 # returns text, error, speed and speed_rate
 def obtain_parameters() -> Dict[str, Union[int, float, str]]:
+    text: str = ""
     parameters: dict = {"Text": "", "Error": int(input(LANGUAGE_OUTPUT["Error_parameter"])),
                         "Speed": float(input(LANGUAGE_OUTPUT["Type_rate_parameter"])),
                         "Speed_rate_added": float(input(LANGUAGE_OUTPUT["Type_rate_added_parameter"]))}
 
-    print(LANGUAGE_OUTPUT["Text_parameter"])
-
-    text: str = '\n'.join(iter(input, ""))
+    print(LANGUAGE_OUTPUT["Text_parameter"])  # Ask for the text
+    text = '\n'.join(iter(input, ""))
     parameters["Text"] = text.replace("\n", " ").strip()
     return parameters
 

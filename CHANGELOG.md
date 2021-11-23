@@ -7,6 +7,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [**1.1.2**] - 2021-11-23
+
+### Fixed
+
+* Some code fixes (refactored some code and added some missing type hinting).
+
 ## [**1.1.1**] - 2021-11-18
 
 ### Fixed
