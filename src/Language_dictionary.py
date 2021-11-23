@@ -1,17 +1,20 @@
 from locale import getlocale
 
+RECOMENDED_TYPOS: str = "25"
+RECOMENDED_SPEED: str = "0.4"
+RECOMENDED_RANDOM_SPEED_ADDED: str = "0.2"
+
 
 def obtain_mechanography_language_dictionary() -> dict:
     # Obtains the system language and writes the print texts in English or Spanish. The function returns the dict
-
-    language_dict: dict = {}
     if 'En' in getlocale()[0] or 'en' in getlocale()[0]:  # ENGLISH 🇬🇧🇺🇸
         language_dict = {"Greeting": "Script made by @Josee9988 | Jose Gracia Berenguer ;)\n\n",
                          "Text_parameter": "Introduce the text to be written: (double enter to start)\n",
                          "Error_parameter": "Introduce the rate of typos (every X +- randomness a typo will occur) ("
-                                            "eg: 25): ",
-                         "Type_rate_parameter": "Introduce the pulsation speed (eg: 0.4): ",
-                         "Type_rate_added_parameter": "Introduce typing rate to be added randomly (eg: 0.2): ",
+                                            f"eg: {RECOMENDED_TYPOS}): ",
+                         "Type_rate_parameter": f"Introduce the pulsation speed (eg: {RECOMENDED_SPEED}): ",
+                         "Type_rate_added_parameter": "Introduce typing rate to "
+                                                      f"be added randomly (eg: {RECOMENDED_RANDOM_SPEED_ADDED}): ",
                          "Countdown": "%sPlease, point the mouse wherever you want to write, the script will begin "
                                       "in %d seconds%s",
                          "Remaining_characters": "Characters remaining: %d     ",
@@ -22,10 +25,11 @@ def obtain_mechanography_language_dictionary() -> dict:
         language_dict = {"Greeting": "Programa hecho por @Josee9988 | Jose Gracia Berenguer ;)\n\n",
                          "Text_parameter": "Introduce el texto a escribir: (doble intro para validarlo)\n",
                          "Error_parameter": "Introduce cada cuántos carácteres se realizará un fallo (cada X +- un "
-                                            "ratio aleatorio para que ocurra un error tipográfico) (ej: 25): ",
-                         "Type_rate_parameter": "Introduce tasa de pulsaciones (ej: 0.4): ",
+                                            "ratio aleatorio para que ocurra un "
+                                            f"error tipográfico) (ej: {RECOMENDED_TYPOS}): ",
+                         "Type_rate_parameter": f"Introduce tasa de pulsaciones (ej: {RECOMENDED_SPEED}): ",
                          "Type_rate_added_parameter": "Introduce tasa de aleatoriedad de pulsaciones a añadir (ej: "
-                                                      "0.2): ",
+                                                      f"{RECOMENDED_RANDOM_SPEED_ADDED}): ",
                          "Countdown": "%sPor favor, situa el ratón donde desees escribir, el programa empezará en %d "
                                       "segundos%s",
                          "Remaining_characters": "Carácteres restantes: %d     ",

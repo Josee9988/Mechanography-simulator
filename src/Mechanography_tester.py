@@ -62,13 +62,12 @@ def yes_or_no(question) -> bool:
 
 # returns text, error, speed and speed_rate
 def obtain_parameters() -> Dict[str, Union[int, float, str]]:
-    text: str = ""
     parameters: dict = {"Text": "", "Error": int(input(LANGUAGE_OUTPUT["Error_parameter"])),
                         "Speed": float(input(LANGUAGE_OUTPUT["Type_rate_parameter"])),
                         "Speed_rate_added": float(input(LANGUAGE_OUTPUT["Type_rate_added_parameter"]))}
 
     print(LANGUAGE_OUTPUT["Text_parameter"])  # Ask for the text
-    text = '\n'.join(iter(input, ""))
+    text: str = '\n'.join(iter(input, ""))
     parameters["Text"] = text.replace("\n", " ").strip()
     return parameters
 

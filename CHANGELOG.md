@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
+## [Unreleased]
+
+### Added
+
+* Recommended parameters as global variables.
+
+### Fixed
+
+* Minor code style changes.
+
 ## [**1.1.3**] - 2021-11-23
 
 ### Fixed
