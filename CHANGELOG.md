@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 ### Fixed
 
 * Minor code style changes.
+* Spanish greeting message.
+
+### Removed
+
+* Default parameter values at the write function.
 
 ## [**1.1.3**] - 2021-11-23
 

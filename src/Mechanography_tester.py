@@ -34,7 +34,7 @@ if name == 'nt':  # If we are running on Windows remove all the colours
     COLOUR_RED = COLOUR_GREEN = COLOUR_RESET = ""
 
 
-def write_as_keyboard(text: str = "", error: int = 0, speed: float = 1, speed_rate_added: float = 0.5) -> None:
+def write_as_keyboard(text: str, error: int, speed: float, speed_rate_added: float) -> None:
     error_rate: float = error
     i: int = len(text)
     for character in text:  # Loop over each character in the string
