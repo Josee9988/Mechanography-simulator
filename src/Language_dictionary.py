@@ -22,7 +22,7 @@ def obtain_mechanography_language_dictionary() -> dict:
                          "Press_any": "Press any key to continue... ",
                          "Restart": "\nDo you wish to restart the script (with different data)"}
     else:  # SPANISH 🇪🇸
-        language_dict = {"Greeting": "Programa hecho por @Josee9988 | Jose Gracia Berenguer ;)\n\n",
+        language_dict = {"Greeting": "Script hecho por @Josee9988 | Jose Gracia Berenguer ;)\n\n",
                          "Text_parameter": "Introduce el texto a escribir: (doble intro para validarlo)\n",
                          "Error_parameter": "Introduce cada cuántos carácteres se realizará un fallo (cada X +- un "
                                             "ratio aleatorio para que ocurra un "
