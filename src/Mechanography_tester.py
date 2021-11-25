@@ -10,27 +10,27 @@ from pynput import keyboard
 from Language_dictionary import obtain_mechanography_language_dictionary
 
 globals().update(dict(
-    __title__='Mechanography tester',
+    __title__="Mechanography tester",
     __author__="Jose Gracia Berenguer",
     __email__="jgracia9988@gmail.com",
     __status__="Production",
-    __copyright__='Free Software License',
-    __license__='MIT',
-    __version__='1.1.3',
-    __summary__='A Python3 script that simulates the user typing a text on their keyboard. (control the speed, '
-                'randomness, rate of typos and more!)',
-    __uri__='https://jgracia.es',
+    __copyright__="Free Software License",
+    __license__="MIT",
+    __version__="1.1.4",
+    __summary__="A Python3 script that simulates the user typing a text on their keyboard. (control the speed, "
+                "randomness, rate of typos and more!)",
+    __uri__="https://jgracia.es",
 ))  # metadata
 
 KEYBOARD: any = keyboard.Controller()  # Create the controller
 LANGUAGE_OUTPUT: dict = obtain_mechanography_language_dictionary()
 COUNTDOWN_TIME: int = 5  # seconds
-ERROR_LETTERS: str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` '
+ERROR_LETTERS: str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` "
 COLOUR_RED: str = "\033[1;31;40m"
 COLOUR_GREEN: str = "\033[1;32;40m"
 COLOUR_RESET: str = "\033[0;0m"
 
-if name == 'nt':  # If we are running on Windows remove all the colours
+if name == "nt":  # If we are running on Windows remove all the colours
     COLOUR_RED = COLOUR_GREEN = COLOUR_RESET = ""
 
 
@@ -47,17 +47,17 @@ def write_as_keyboard(text: str, error: int, speed: float, speed_rate_added: flo
             KEYBOARD.type(character)
         sleep(speed + uniform(0, speed_rate_added))  # Sleep
         i = i - 1
-        print(LANGUAGE_OUTPUT["Remaining_characters"] % i, end='\r')
+        print(LANGUAGE_OUTPUT["Remaining_characters"] % i, end="\r")
 
 
 def yes_or_no(question) -> bool:
-    reply: str = input(question + ' yes/no (y/n): ').lower().strip()
-    if reply[0] == 'Y' or reply[0] == 'y':
+    reply: str = input(question + " yes/no (y/n): ").lower().strip()
+    if reply[0] == "Y" or reply[0] == "y":
         return True
-    if reply[0] == 'N' or reply[0] == 'n':
+    if reply[0] == "N" or reply[0] == "n":
         return False
     else:
-        return yes_or_no("Introduce 'Y' or 'N''.")
+        return yes_or_no("Introduce 'Y' or 'N'.")
 
 
 # returns text, error, speed and speed_rate
@@ -67,7 +67,7 @@ def obtain_parameters() -> Dict[str, Union[int, float, str]]:
                         "Speed_rate_added": float(input(LANGUAGE_OUTPUT["Type_rate_added_parameter"]))}
 
     print(LANGUAGE_OUTPUT["Text_parameter"])  # Ask for the text
-    text: str = '\n'.join(iter(input, ""))
+    text: str = "\n".join(iter(input, ""))
     parameters["Text"] = text.replace("\n", " ").strip()
     return parameters
 
@@ -75,7 +75,7 @@ def obtain_parameters() -> Dict[str, Union[int, float, str]]:
 def announce_countdown(text: str, countdown_duration: int) -> None:
     for _ in range(5):
         print(LANGUAGE_OUTPUT["Countdown"] % (
-            COLOUR_GREEN, countdown_duration, COLOUR_RESET), end='\r')
+            COLOUR_GREEN, countdown_duration, COLOUR_RESET), end="\r")
         countdown_duration = countdown_duration - 1
         sleep(1)
 
