@@ -1,8 +1,8 @@
 from locale import getlocale
 
 RECOMENDED_TYPOS: str = "25"
-RECOMENDED_SPEED: str = "0.4"
-RECOMENDED_RANDOM_SPEED_ADDED: str = "0.2"
+RECOMENDED_SPEED: str = "0.2"
+RECOMENDED_RANDOM_SPEED_ADDED: str = "0.02"
 
 
 def obtain_mechanography_language_dictionary() -> dict:
