@@ -19,10 +19,8 @@
 
 ## 🤔 **About the project**
 
-* A Python3 script that simulates the user typing a text on their keyboard. (control the speed, randomness, rate of
-  typos and more!)
-* The script will pretend that you are typing a text on your keyboard with random parameters and even typos to make it
-  look super legit.
+* A Python3 script that simulates human writing (on their keyboard). (control the speed, randomness, rate of typos and more!)
+* The script will pretend that you are typing a text on your keyboard with random parameters and even typos to make it look more legit.
 * The user can control the speed of typing, the rate of random speed of typing and the rate of typos.
 * The script is cross-platform compatible with Windows, macOS and Linux.
 * The script supports Spanish 🇪🇸 and English 🇬🇧🇺🇸!
@@ -66,10 +64,10 @@
 
 We are currently looking for new donators to help and maintain this project! ❤️
 
-By donating, you will help the development of this project, and *you will be featured in this Mechanography-simulator's
+By donating, you will help the development of this project and *you will be featured in this Mechanography-simulator's
 README.md* so, everyone can see your kindness and visit your content ⭐.
 
-<a href="https://github.com/sponsors/Josee9988">
+<a href="https://i.imgur.com/hnLIiDe.gif">
   <img src="https://img.shields.io/badge/Sponsor-Josee9988/Mechanography simulator-blue?logo=github-sponsors&style=for-the-badge&color=red">
 </a>
 
